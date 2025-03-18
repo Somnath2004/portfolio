@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal portfolio Wesite - Easy Tutorial</title>
+    <link rel="stylesheet" href="protfolio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>*{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+    }
+    html{
+        scroll-behavior: smooth;
+    }
+    body{
+        background-color:rgb(16, 15, 16);
+        color: #fff;
+       
+    }
+    .header{
+        width: 100%;
+        height: 100vh;
+        background-size: cover;
+        background-position: center;
+    }
+    .container{
+        padding: 10px 10%;
+    }
+    .logo{
+        height:80px;
+       width: 80px;
+    }
+    nav{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    nav ul li{
+        display:inline-block;
+        list-style: none;
+        margin: 10px 20px;
+    }
+    nav ul li a{
+        color: #fff;
+        text-decoration: none;
+        font-size: 18px;
+        position: relative;
+    }
+    nav ul li a::after{
+        content: '';
+        width: 0;
+        height: 3px;
+        background: #ff004f;
+        position: absolute;
+        left: 0;
+        bottom: -6px;
+        transition: 0.5s;
+    }
+    nav ul li a:hover::after{
+        width: 100% ;
+    }
+    .header-text{
+        margin-top: 20%;
+       font-size: 30px;
+    }
+    .header-text h1{
+        font-size: 60px;
+        margin-top: 20px;
+    }
+    .header-text h1 span{
+        color: #ff004f;
+    }
+    .about{
+        padding: 80px 0;
+        color: #ababab;
+    }
+    .row{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap:wrap;
+    }
+    .about-col-1{
+       flex-basis:35%;
+    }
+    .about-col-1 img{
+        width: 100%;
+        border-radius: 15px;
+    }
+    .about-col-2{
+        flex-basis: 60%;
+    }
+    .sub-title{
+        font-size: 60px;
+        font-weight: 600;
+        color: #fff; 
+    }
+    .img-1{
+        border-radius: 100%;
+    }
+    .tab-titles{
+        display: flex;
+        margin: 20px 0 40px;
+    }
+    .tab-links{
+        margin-right: 50px;
+        font-size: 18px;
+        font-weight: 500;
+        cursor: pointer;
+        position: relative;
+    }
+    .tab-links::after{
+        content:'';
+       width: 0;
+       height: 3px;
+       background: #ff004f;
+       position: absolute;
+       left: 0;
+       bottom: -8px;
+       transition: 0.5s;
+    }
+    .tab-links.active-link::after{
+       width: 50%;
+    }
+    .tab-contents ul li{
+        list-style: none;
+        margin: 10px 0;
+    }
+    .tab-contents ul li span{
+        color: #b54769;
+        font-size: 14px;
+    }
+    .tab-contents{
+        display: none;
+    }
+    .tab-contents.active-tab{
+        display: block;
+    }
+    .Services{
+        padding: 30px 0;
+    }
+    .services-list{
+        display:grid;
+        grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+        grid-gap: 40px;
+        margin-top: 50px;
+    }
+    .services-list div{
+        background: #262626;
+        padding: 40px;
+        font-size: 13px;
+        font-weight: 300;
+        border-right:10px;
+       transition: background 0.5s,transform 0.5s;
+    }
+    .services-list div h2{
+       font-size: 30px;
+       font-weight: 500;
+       margin-bottom: 15px;
+    }
+    .services-list div a{
+        text-decoration: none;
+        color: #fff;
+        font-size: 12px;
+        margin-top: 20px;
+        display: inline-block;
+    }
+    .services-list div:hover{
+        background:#ff004f;
+        transform: translateY(-10px);
+    }
+    /*---------portfolio----------*/
+    .portfolio{
+        padding: 50px 0;
+    }
+    .work-list{
+        display:grid;
+        grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+        grid-gap: 40px;
+        margin-top: 50px;
+    }
+    .work{
+         border-radius: 10px;
+         position: relative;
+         overflow: hidden;
+    }
+    .work img{
+        width: 100%;
+         height: 230px;
+        border-radius: 10px;
+        display: block;
+        transition: transform 0.5s;
+    }
+    .layer{
+       width: 100%;
+       height: 0;
+       border-radius: 10px;
+       background: linear-gradient(rgba(0,0,0,0.6),#ff004f);
+       position: absolute;
+     left: 0;
+     bottom: 0;
+     overflow: hidden;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     flex-direction: column;
+     padding: 0 40px;
+     text-align: center;
+     font-size: 14px;
+     transition:height 0.5s;
+    }
+    .layer h3{
+        font-weight: 500;
+        margin-bottom: 20px;
+    }
+    .work:hover img{
+        transform: scale(1.1);
+    }
+    .work:hover .layer{
+        height: 100%;
+    }
+    .btn{
+        display: block;
+        margin: 50px auto;
+        width: fit-content;
+        border: 1px solid #ff004f;
+        padding:14px 50px;
+        border-radius: 6px;
+        text-decoration: none;
+        color: #fff;
+        transition: background 0.5s;
+    }
+    .btn:hover{
+      background: #ff004f;
+    }
+    .contact-left{
+        flex-basis: 35%;
+    }
+    .contact-right{
+        flex-basis:60%;
+    }
+    .contact-left p{
+        margin-top: 30px;
+    }
+    .contact-left p i{
+        color: #ff004f;
+        margin-right: 15px;
+        font-size: 20px;
+    }
+    .social-icons{
+        margin-top: 30px;
+    }
+    .social-icons a{
+        text-decoration: none;
+        font-size: 30px;
+        margin-right: 15px;
+        color: #ababab;
+        display: inline-block; 
+      transition: transform 0.5s;
+    }
+    .social-icons a:hover{
+        color: #ff004f;
+        transform: translateY(-5px);
+    }
+    .btn.btn2{
+        display: inline-block;
+        background: #ff004f;
+    }
+    .contact-right form{
+       width: 100%;
+    }
+    form input,form textarea{
+        width: 100%;
+        border: 0;
+        outline: none;
+        background:#262626;
+        padding: 15px;
+        margin: 15px 0;
+        color: #fff;
+        font-size: 18px;
+        border-radius: 6px;
+    }
+    form.btn2{
+        padding: 14px 60px;
+        font-size: 18px;
+        margin-top: 20px;
+        cursor: pointer;
+    }
+    nav .fas{
+        display: none;
+    }
+    @media only screen and (max-width:600px){
+        .header-text{
+            margin-top: 100%;
+           font-size: 16px;
+        }
+        .header-text h1{
+            font-size: 30px;
+        }
+        nav .fas{
+            display: block;
+            font-size: 25px;
+        }
+        nav ul{
+            background: #ff004f;
+            position: fixed;
+            top: 0;
+            right: -200px;
+            width: 200px;
+            height: 100vh;
+            padding-top: 50px;
+            z-index: 2;
+            transition: right 0.5s;
+        }
+        nav ul li{
+            display: block;
+            margin: 25px;
+        }
+        nav ul .fas{
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            cursor:pointer;
+        }
+        .sub-title{
+            font-size: 40px;
+        }
+    .about-col-1,.about-col-2{
+        flex-basis: 100%;
+    }
+    .about-col-1{
+        margin-bottom: 30px;
+    }
+    .about-col-2{
+         font-size: 14px;
+    }
+    .tab-links{
+        font-size: 16px;
+        margin-right: 20px;
+    }
+    .contact-left,.contact-right{
+    flex-basis: 100%;
+    }
+    }
+    #msg{
+        color: #61b752;
+        margin-top: -40px;
+        display: block;
+    }</style>
+</head>
+<body>
+      <div id="header">
+          <div class="container">
+            <nav>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQR0C-fMnY9RtcClt-He9OzDjrZNf7Ez5JQPA&s" class="img-1">
+                <ul id="sidemenu">
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#Services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <i class="fa-solid fa-circle-xmark" onclick="closemenu()"></i>
+                </ul>
+                <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+            </nav>
+            <div class="header-text">
+                <p>Web Developer</p>
+                <h1>Hi, I'm <span>Somnath</span><br> From India</h1>
+            </div>
+          </div>
+      </div>
+       <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+            <img src="./photo1.jpg">
+                </div>
+                <div class="about-col-2">
+                    <h1 class="sub-title">About  Me</h1>
+                    <p>A short, engaging introduction about My background, skills, and passion for technology. Example:
+                        "I am a passionate software developer skilled in web development, database management, and problem-solving. I enjoy working on innovative projects that enhance my technical and analytical skills."                        
+                        </p>
+                <div class="tab-titles">
+                    <p class="tab-links active-link" onclick="opentab('skills')">Skill</p>
+                    <p class="tab-links" onclick="opentab('experiance')">Experience</p>
+                    <p class="tab-links" onclick="opentab('education')">Education</p>
+                </div>
+                 <div class="tab-contents active-tab" id="skills">
+                    <ul>
+                        <li><span>UI/Ux</span><br>Designing  Web/App Interfaces</li>
+                        <li><span>Web development</span><br>Web App Development</li>
+                        <li><span>App Development</span><br>Building Android/ios Apps</li>
+                    </ul>
+                 </div>
+                 <div class="tab-contents " id="experiance">
+                    <ul>
+                        <li><span>Internship | CodSoft</span><br>Developed problem-solving skills in C++ programming through real-world challenges.</li>
+                        <li><span>Weather Application (HTML, CSS, JavaScript, API)</span><br>Designed a user-friendly interface for real-time weather updates.</li>
+                        <li><span>Quiz App using MEAN Stack</span><br>Built an interactive quiz application using MongoDB, Express.js, Angular, and Node.js.</li>
+                    </ul>
+                 </div>
+                 <div class="tab-contents" id="education">
+                    <ul>
+                        <li><span>2022 - current</span><br>Computer Science Engineer</li>
+                        <li><span>2022</span><br>Higher Secondary Education (12th Grade) - Science Stream</li>
+                        <li><span>2020</span><br>Secondary Education (10th Grade)</li>
+                    </ul>
+                 </div>
+                </div>
+            </div>
+        </div>
+       </div>
+           <!--Services-->
+           <div id="Services">
+              <div class="container">
+                <h1 class="sub-title">My Services</h1>
+                <div class="services-list">
+                     <div>
+                        <h2>Web Design</h2>
+                        <p>In today’s digital world, having a strong online presence is crucial, especially for professionals like designers, developers, photographers, and freelancers. A portfolio website showcases your skills, experience, and previous work in an engaging and visually appealing manner.</p>
+                       <a href="#">learn more</a>
+                    </div>
+                     <div>
+                        <h2>UI/Design</h2>
+                        <p>In the digital era, the success of any website, app, or software heavily depends on its User Interface (UI) and User Experience (UX) design. A well-structured UI/UX design ensures user satisfaction, improves engagement, and increases conversions. Businesses and individuals often seek UI/UX design services to create visually appealing and user-friendly digital products.</p>
+                        <a href="#">learn more</a>
+                    </div>
+                    <div>
+                        <h2>App Design</h2>
+                        <p>In today’s digital world, mobile and web apps have become essential for businesses and individuals. A well-designed app not only attracts users but also ensures a smooth and enjoyable experience. App design services focus on creating visually appealing, user-friendly, and functional applications that cater to different needs.</p>
+                        <a href="#">learn more</a>
+                    </div>
+                </div>
+              </div>
+           </div>
+           <!--portfolio-->
+           <div id="portfolio">
+             <div class="container">
+                <h1 class="sub-title">My Work</h1>
+                <div class="work-list">
+                    <div class="work">
+                        <img src="https://cdn.dribbble.com/userupload/9379672/file/original-830a1cd216422543ecea682d94dbb610.jpg?format=webp&resize=400x300&vertical=center" alt="">
+                        <div class="layer">
+                            <h3>Social Media App</h3>
+                            <p>The app conncts you yo to talented people around the world.
+                                Download it form play store
+                            </p>
+                        </div>
+                          </div>
+                          <div class="work">
+                      <img src="https://i.ytimg.com/vi/GFhKfMY0L2E/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDO3BAGa8MZ-_Lzui4Av79uzF1Q3Q" alt="">
+                       <div class="layer">
+                      <h3>weather App</h3>
+                      <p>The app conncts you yo to talented people around the world.
+                          Download it form play store
+                      </p>
+                    </div>
+                    </div>
+                          <div class="work">
+                       <img src="https://xdfile.com/wp-content/uploads/2021/01/Free-E-Commerce-App-XD-UI-Design.jpg" alt="">
+                       <div class="layer">
+                       <h3>E-commarce App</h3>
+                       <p>The app conncts you yo to talented people around the world.
+                           Download it form play store
+                       </p>   
+                    </div>
+                          </div>
+                       </div>
+                       <a href="#" class="btn">See More</a>
+                     </div>
+                </div>
+               <!-- Contact-->
+                <div id="contact">
+                    <div class="container">
+                        <div class="row">
+                            <div class="contact-left">
+                             <h1 class="sub-title">Contact Me</h1>
+                             <p><i class="fa-solid fa-paper-plane"></i>somnathteli21@gmail.com</p>
+                             <p><i class="fa-solid fa-phone"></i>9647816162</p>
+                             <div class="social-icons">
+                                <a href="https://www.facebook.com/profile.php?id=100043142470932"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="https://www.instagram.com/dx.somnath/"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="https://www.linkedin.com/in/somnathteli/"><i class="fa-brands fa-linkedin"></i></a>
+                                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                             </div>
+                             <a href="Downloads/som.pdf" class="btn btn2">Download CV</a>
+                            </div>
+                            <div class="contact-right">
+                              <form name="submit-to-google-sheet">
+                                <input type="text" name="Name" placeholder="Your Name :" required>
+                                <input type="email" name="Email" placeholder="Your Email :" required>
+                                <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                                <button type="submit">Submit</button>
+                              </form>
+                              <span id="msg"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+          
+       <script>
+        var tablinks = document.getElementsByClassName("tab-links");
+        var tabcontents = document.getElementsByClassName("tab-contents");
+        function opentab(tabname){
+            for(tablink of tablinks){
+                tablink.classList.remove("active-link");
+            }
+            for(tabcontent of tabcontents){
+                tabcontent.classList.remove("active-tab")
+            }
+            event.currentTarget.classList.add("active-link");
+            document.getElementById(tabname).classList.add("active-tab");
+        }
+       </script>
+       <script>
+       var sidemeu=document.getElementById("sidemenu");
+       function openmenu(){
+        sidemeu.style.right="0";
+       }
+       function closemenu(){
+        sidemeu.style.right="-200px";
+       }
+       </script>
+       <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyciIbOcTbuh5it8DO2GiGKhD1hgWWqBHzNz54FrPLS2o9iQV0VhLXuaTlCrnOsCFT9/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg=document.getElementById("msg");
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response =>{
+                msg.innerHTML="Messege sent successfully"
+                setTimeout(function(){
+                    msg.innerHTML=""
+                },5000)
+                form.reset();
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+</body>
+</html>
